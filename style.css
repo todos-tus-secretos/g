@@ -1,0 +1,62 @@
+/* Reset básico para margens e fontes */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Centralizar o conteúdo e limitar largura */
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+/* Títulos */
+h1, h2 {
+  color: #f39c12;
+  text-align: center;
+}
+
+/* Input de senha */
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Botão */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #f39c12;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #121212;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d68910;
+}
+
+/* Mensagens de erro */
+.error {
+  color: #e74c3c;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
