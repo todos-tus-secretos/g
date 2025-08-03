@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="style.css">
   <title>Fase 1</title>
 </head>
 <body>
@@ -8,7 +9,10 @@
   <p>Qual é a senha?</p>
   <input type="text" id="senha" placeholder="Digite a senha">
   <button onclick="verificarSenha()">Enviar</button>
-
+<audio controls>
+  <source src="som.wav" type="audio/wav">
+  Seu navegador não suporta áudio.
+</audio>
   <script>
     function verificarSenha() {
       var senha = document.getElementById("senha").value;
@@ -20,4 +24,5 @@
     }
   </script>
 </body>
+
 </html>
