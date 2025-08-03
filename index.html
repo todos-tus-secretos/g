@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fase 0</title>
+</head>
+<body>
+  <h2>Desafio 0</h2>
+  <p>Qual é a senha?</p>
+  <input type="text" id="senha" placeholder="Digite a senha">
+  <button onclick="verificarSenha()">Enviar</button>
+
+  <script>
+    function verificarSenha() {
+      var senha = document.getElementById("senha").value;
+      if (senha.toLowerCase() === "resposta0") {
+        window.location.href = "fasehtml54e3wq.html"; // próxima fase
+      } else {
+        alert("Senha incorreta. Tente novamente.");
+      }
+    }
+  </script>
+</body>
+</html>
