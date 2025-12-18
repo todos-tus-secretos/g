@@ -16,7 +16,7 @@
     <input type="text" id="senha" placeholder="Digite a senha">
     <button onclick="verificarSenha()">Enviar</button>
 
-    <div id="erro" class="error">
+    <div id="erro" class="error" style="display:none;">
       Senha incorreta. Tente novamente.
     </div>
   </div>
@@ -25,7 +25,7 @@
     async function verificarSenha() {
       const senha = document.getElementById("senha").value.toLowerCase();
       const erro = document.getElementById("erro");
-
+      erro.style.display = "none";
       const hashCorreto = "69da7a178c654f15a46dc5f5cdbb9915d8ba9cfae706481db6c02066bb318d8a";
 
       const encoder = new TextEncoder();
@@ -44,3 +44,4 @@
 
 </body>
 </html>
+
