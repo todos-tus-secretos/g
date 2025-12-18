@@ -5,7 +5,7 @@
 
 html, body {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
 }
 
 /* Body agora controla a centralização */
@@ -21,6 +21,8 @@ body {
   display: flex;
   justify-content: center; /* horizontal */
   align-items: center;     /* vertical */
+
+  min-height: 100dvh;
 }
 
 /* Container principal */
@@ -106,3 +108,4 @@ button:active {
     font-size: 17px;
   }
 }
+
