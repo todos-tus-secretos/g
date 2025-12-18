@@ -43,7 +43,8 @@ body {
 h1, h2 {
   color: #f39c12;
   font-size: 32px;
-  margin: 0px;
+  margin-up: 10px;
+  margin-down: 0px;
   text-align: center;
 }
 
@@ -109,6 +110,7 @@ button:active {
     font-size: 17px;
   }
 }
+
 
 
 
