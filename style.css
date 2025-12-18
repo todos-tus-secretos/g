@@ -1,16 +1,36 @@
 /* Reset básico */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Body agora controla a centralização */
 body {
   margin: 0;
   padding: 16px;
+
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #121212;
   color: #e0e0e0;
+
+  /* CENTRALIZAÇÃO TOTAL */
+  display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center;     /* vertical */
 }
 
 /* Container principal */
 .container {
+  width: 100%;
   max-width: 600px;
-  margin: 20px auto;
+
+  /* REMOVIDO margin-top/bottom para não quebrar centralização */
+  margin: 0;
+
   padding: 20px;
   background-color: #1e1e1e;
   border-radius: 10px;
@@ -28,6 +48,7 @@ h1, h2 {
 p {
   font-size: 16px;
   line-height: 1.4;
+  text-align: center;
 }
 
 /* Input */
@@ -39,7 +60,6 @@ input[type="text"] {
   margin-bottom: 20px;
   border: none;
   border-radius: 6px;
-  box-sizing: border-box;
 }
 
 /* Botão */
@@ -70,6 +90,10 @@ button:active {
 
 /* 🔽 Ajustes específicos para telas pequenas */
 @media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
   .container {
     padding: 16px;
   }
