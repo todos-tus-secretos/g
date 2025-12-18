@@ -1,29 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <title>All my love</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h2>Seja bem vinda</h2>
-  <p>Qual é a obra?</p>
-  <input type="text" id="senha" placeholder="Digite a senha">
-  <button onclick="verificarSenha()">Enviar</button>
+
+  <div class="container">
+    <h2>Seja bem-vinda</h2>
+    <p>Qual é a obra?</p>
+
+    <input type="text" id="senha" placeholder="Digite a senha">
+    <button onclick="verificarSenha()">Enviar</button>
+
+    <div id="erro" class="error">
+      Senha incorreta. Tente novamente.
+    </div>
+  </div>
 
   <script>
-    function verificarSenha() {
-      var senha = document.getElementById("senha").value;
-      if (senha.toLowerCase() === "quartoemarles") {
-        window.location.href = "html54e3wq.html"; // próxima fase
+    async function verificarSenha() {
+      const senha = document.getElementById("senha").value.toLowerCase();
+      const erro = document.getElementById("erro");
+
+      const hashCorreto = "69da7a178c654f15a46dc5f5cdbb9915d8ba9cfae706481db6c02066bb318d8a";
+
+      const encoder = new TextEncoder();
+      const data = encoder.encode(senha);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hash = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+
+      if (hash === hashCorreto) {
+        window.location.href = atob("aHRtbDU0ZTN3cS5odG1s");
       } else {
-        alert("Senha incorreta. Tente novamente.");
+        erro.style.display = "block";
       }
     }
   </script>
+
 </body>
 </html>
-
-
-
