@@ -1,29 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <link rel="stylesheet" href="style.css">
-  <title>Fase 1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>.</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h2>Desafio 1</h2>
-  <p>Qual é a senha?</p>
-  <input type="text" id="senha" placeholder="Digite a senha">
-  <button onclick="verificarSenha()">Enviar</button>
-<audio controls>
-  <source src="somsom.wav" type="audio/wav">
-  Seu navegador não suporta áudio.
-</audio>
+
+  <div class="container">
+    <img src="imagem.jpg">
+
+    <input type="text" id="senha" placeholder="Digite a senha">
+    <button onclick="verificarSenha()">Enviar</button>
+
+    <div id="erro" class="error" style="display:none;">
+      Senha incorreta. Tente novamente.
+    </div>
+  </div>
+
   <script>
-    function verificarSenha() {
-      var senha = document.getElementById("senha").value;
-      if (senha.toLowerCase() === "resposta") {
-        window.location.href = "fase2.html"; // próxima fase
+    async function verificarSenha() {
+      const senha = document.getElementById("senha").value.toLowerCase();
+      const erro = document.getElementById("erro");
+      erro.style.display = "none";
+      const hashCorreto = "69da7a178c654f15a46dc5f5cdbb9915d8ba9cfae706481db6c02066bb318d8a";
+
+      const encoder = new TextEncoder();
+      const data = encoder.encode(senha);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hash = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+
+      if (hash === hashCorreto) {
+        window.location.href = atob("bW9yc2UuaHRtbA");
       } else {
-        alert("Senha incorreta. Tente novamente.");
+        erro.style.display = "block";
       }
     }
   </script>
-</body>
 
+</body>
 </html>
 
