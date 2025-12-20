@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <img src="barra.jpg">
+
+    <input type="text" id="senha" placeholder="Digite a senha">
+    <button onclick="verificarSenha()">Enviar</button>
+
+    <div id="erro" class="error" style="display:none;">
+      Senha incorreta. Tente novamente.
+    </div>
+  </div>
+
+  <script>
+    async function verificarSenha() {
+      const senha = document.getElementById("senha").value.toLowerCase();
+      const erro = document.getElementById("erro");
+      erro.style.display = "none";
+      const hashCorreto = "85128b28bb1f3b27d4e67b553f8444a429ea4c12bdec96040f66b1d9f91afbdf";
+
+      const encoder = new TextEncoder();
+      const data = encoder.encode(senha);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hash = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+
+      if (hash === hashCorreto) {
+        window.location.href = atob("bW9yc2UuaHRtbA");
+      } else {
+        erro.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
