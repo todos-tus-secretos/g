@@ -60,6 +60,10 @@ p {
   font-size: 16px;
   line-height: 1.4;
   text-align: center;
+  max-wid: : 10;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 /* Input */
@@ -117,6 +121,7 @@ button:active {
     font-size: 17px;
   }
 }
+
 
 
 
