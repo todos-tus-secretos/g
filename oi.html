@@ -1,90 +1,113 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Diálogo</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background-color: #121212;
-      color: #e0e0e0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      cursor: pointer;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diálogo</title>
 
-    .container {
-      max-width: 600px;
-      padding: 20px;
-      text-align: center;
-      font-size: 20px;
-      line-height: 1.6;
-    }
+<style>
+  * {
+    box-sizing: border-box;
+  }
 
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      animation: blink 1s infinite;
-    }
+  body {
+    margin: 0;
+    height: 100dvh;
+    background-color: #000;
+    color: #f1f1f1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0; }
-    }
-  </style>
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    /* 🔒 impede seleção azul */
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .dialogo {
+    max-width: 600px;
+    padding: 24px;
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background-color: #f39c12;
+    margin-left: 4px;
+    animation: piscar 1s infinite;
+  }
+
+  @keyframes piscar {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+</style>
 </head>
+
 <body>
 
-  <div class="container">
-    <span id="texto"></span><span class="cursor">|</span>
-  </div>
+<div class="dialogo" id="texto"></div>
 
-  <script>
-    const frases = [
-      "Você demorou para chegar.",
-      "Achei que não viria.",
-      "Algumas respostas não gostam de ser encontradas.",
-      "Mas agora já é tarde."
-    ];
+<script>
+  const frases = [
+    "Você finalmente chegou até aqui.",
+    "Nem todos percebem o que está escondido.",
+    "Cada escolha deixa um rastro.",
+    "Agora, observe com atenção."
+  ];
 
-    let indiceFrase = 0;
-    let indiceLetra = 0;
-    let escrevendo = false;
-    const velocidade = 100; // ms por letra
-    const textoEl = document.getElementById("texto");
+  const texto = document.getElementById("texto");
 
-    function escreverFrase() {
-      escrevendo = true;
+  let fraseAtual = 0;
+  let letraAtual = 0;
+  let escrevendo = false;
+  let iniciado = false;
 
-      if (indiceLetra < frases[indiceFrase].length) {
-        textoEl.textContent += frases[indiceFrase].charAt(indiceLetra);
-        indiceLetra++;
-        setTimeout(escreverFrase, velocidade);
-      } else {
+  function escreverFrase() {
+    escrevendo = true;
+    texto.innerHTML = "";
+
+    const intervalo = setInterval(() => {
+      texto.innerHTML =
+        frases[fraseAtual].substring(0, letraAtual + 1) +
+        '<span class="cursor"></span>';
+
+      letraAtual++;
+
+      if (letraAtual === frases[fraseAtual].length) {
+        clearInterval(intervalo);
         escrevendo = false;
       }
+    }, 100); // ⏱️ velocidade solicitada
+  }
+
+  document.body.addEventListener("click", () => {
+    if (!iniciado) {
+      iniciado = true;
+      escreverFrase();
+      return;
     }
 
-    function proximaFrase() {
-      if (escrevendo) return;
+    if (escrevendo) return;
 
-      if (indiceFrase < frases.length - 1) {
-        indiceFrase++;
-        indiceLetra = 0;
-        textoEl.textContent = "";
-        escreverFrase();
-      }
+    fraseAtual++;
+    letraAtual = 0;
+
+    if (fraseAtual < frases.length) {
+      escreverFrase();
     }
-
-    document.body.addEventListener("click", proximaFrase);
-
-    // inicia a primeira frase automaticamente
-    escreverFrase();
-  </script>
+  });
+</script>
 
 </body>
 </html>
+
