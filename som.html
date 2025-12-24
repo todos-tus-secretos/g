@@ -11,7 +11,7 @@
 
   <div class="container">
     <div class="audio-box">
-      <button id="playBtn">▶</button>
+      <button id="playBtn">▶ REPRODUZIR</button>
     </div>
     <audio id="audio" src="grama.wav"></audio>
 
@@ -33,12 +33,12 @@
         playBtn.textContent = "⏸ REPRODUZINDO...";
       } else {
         audio.pause();
-        playBtn.textContent = "▶ REPRODUZIR REGISTRO";
+        playBtn.textContent = "▶ REPRODUZIR";
       }
     });
 
     audio.addEventListener("ended", () => {
-      playBtn.textContent = "▶ REPRODUZIR REGISTRO";
+      playBtn.textContent = "▶ REPRODUZIR";
     });
     async function verificarSenha() {
       const senha = document.getElementById("senha").value.toLowerCase();
