@@ -44,7 +44,7 @@
       const senha = document.getElementById("senha").value.toLowerCase();
       const erro = document.getElementById("erro");
       erro.style.display = "none";
-      const hashCorreto = "8802ece4a29a9e1cd2c711b014e5ed862569a421e4da3fa3f126327ef87ff92e";
+      const hashCorreto = "5e094bc979e68ea8d62981807583bfee2a6302295e70c48d21e339db60dd68e7";
 
       const encoder = new TextEncoder();
       const data = encoder.encode(senha);
@@ -53,7 +53,7 @@
       const hash = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
 
       if (hash === hashCorreto) {
-        window.location.href = atob("c29tLmh0bW");
+        window.location.href = atob("bm9tYnJlLmh0bWw");
       } else {
         erro.style.display = "block";
       }
