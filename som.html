@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+  <div class="container">
+    <div class="audio-box">
+      <button id="playBtn">▶</button>
+    </div>
+    <audio id="audio" src="grama.wav"></audio>
+
+    <input type="text" id="senha" placeholder="Digite a senha">
+    <button onclick="verificarSenha()">Enviar</button>
+
+    <div id="erro" class="error" style="display:none;">
+      Senha incorreta. Tente novamente.
+    </div>
+  </div>
+
+  <script>
+   const playBtn = document.getElementById("playBtn");
+    const audio = document.getElementById("audio");
+
+    playBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = "⏸ REPRODUZINDO...";
+      } else {
+        audio.pause();
+        playBtn.textContent = "▶ REPRODUZIR REGISTRO";
+      }
+    });
+
+    audio.addEventListener("ended", () => {
+      playBtn.textContent = "▶ REPRODUZIR REGISTRO";
+    });
+    async function verificarSenha() {
+      const senha = document.getElementById("senha").value.toLowerCase();
+      const erro = document.getElementById("erro");
+      erro.style.display = "none";
+      const hashCorreto = "8802ece4a29a9e1cd2c711b014e5ed862569a421e4da3fa3f126327ef87ff92e";
+
+      const encoder = new TextEncoder();
+      const data = encoder.encode(senha);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hash = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+
+      if (hash === hashCorreto) {
+        window.location.href = atob("c29tLmh0bW");
+      } else {
+        erro.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
