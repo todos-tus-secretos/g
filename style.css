@@ -121,23 +121,27 @@ button:active {
   button {
     font-size: 17px;
   }
-  .btn {
-  background: none;
+#btn {
+  background: none !important;
   border: 1px solid #555;
   color: #e0e0e0;
   font-weight: normal;
+  width: auto;
+  padding: 12px 18px;
 }
 
-.btn:hover {
+#btn:hover {
   background-color: rgba(255,255,255,0.05);
   color: #fff;
 }
 
-.btn:active {
+#btn:active {
   background-color: rgba(255,255,255,0.1);
 }
 
+
 }
+
 
 
 
